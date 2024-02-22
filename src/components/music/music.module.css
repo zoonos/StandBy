@@ -1,0 +1,109 @@
+.wrap{
+    background-color: #000;
+    border-radius: 5%;  
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+}
+.wrap .playerTop{
+    flex: 3;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.wrap .playerTop .record{
+    background-color: #000;
+    border: 2px solid #fff;
+    border-radius: 50%;
+    overflow: hidden;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    animation: rotate_image 15s linear infinite;
+}
+
+.wrap .playerTop .record .recordImg{
+    width: 75%;
+    height: 75%;
+    border-radius: 50%;
+    border: 2px solid #fff;
+    overflow: hidden;
+}
+.wrap .playerTop .record .recordImg iframe{
+    width: 100%;
+    height: 100%;
+}
+.wrap .playerTop .record .recordImg img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+.wrap .playerBottom{
+    flex: 1;
+    /* border-top: 2px solid #fff; */
+    color: #000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1rem;
+    color: #fff;
+}
+.wrap .playerBottom .info,
+.wrap .playerBottom .player{
+    flex: 1;
+    width: 50%;
+    height: 100%;
+    padding: 1rem;
+    box-sizing: border-box;
+}
+.wrap .playerBottom .info{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+.wrap .playerBottom .info>div{
+    width: 100%;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    word-break: break-all;
+    flex: 1;
+    display: flex;
+    align-items: center;
+}
+.wrap .playerBottom .player{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 1.3rem;
+}
+@media (orientation: portrait) {
+	/* 세로 모드일 때 적용할 CSS */
+    .wrap{
+        width: 80vw;
+        height: 80vw;
+    }
+    .wrap .playerTop .record{
+        width: 50vw;
+        height: 50vw;
+    }
+}
+
+@media (orientation: landscape) {
+	/* 가로 모드일 때 적용할 CSS */
+    .wrap{
+        width: 80vh;
+        height: 80vh;
+    }
+    .wrap .playerTop .record{
+        width: 50vh;
+        height: 50vh;
+    }
+}
+
+@keyframes rotate_image{
+    100% {
+        transform: rotate(360deg);
+    }
+}

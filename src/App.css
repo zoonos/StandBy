@@ -1,38 +1,55 @@
-.App {
-  text-align: center;
+body{
+  overflow: hidden;
 }
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.App{
+  background-color: #000;
+  color: #fff;
   display: flex;
-  flex-direction: column;
-  align-items: center;
+  height: 100vh;
+}
+.objWrap{
+  flex: 1;
+  display: flex;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  /* align-items: center; */
+  width: 50%;
+}
+.itemWrap{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
 }
 
-.App-link {
-  color: #61dafb;
+
+/* swiper pagination */
+.swiper-pagination-bullet{
+  width: 4px !important;
+  height: 4px !important;
+}
+.swiper-pagination-bullet{
+  background-color: #fff !important;
+}
+.swiper-pagination-bullet-active{
+  background-color: #f33d3a !important;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+@media (orientation: portrait) {
+	/* 세로 모드일 때 적용할 CSS */
+  .App{
+    flex-direction: column;
   }
-  to {
-    transform: rotate(360deg);
+  .objWrap{
+    width: 100%;
+  }
+}
+
+@media (orientation: landscape) {
+	/* 가로 모드일 때 적용할 CSS */
+  .App{
+
+  }
+  .objWrap{
+    
   }
 }

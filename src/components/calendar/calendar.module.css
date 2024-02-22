@@ -1,0 +1,72 @@
+/* section calendar */
+
+.sec_cal {
+    width: 80vw;
+    height: 80vw;
+    display: flex;
+    flex-direction: column;
+}
+
+.sec_cal .year_month {
+    width: 100%;
+    line-height: 1;
+    color: #f33d3a;
+    font-weight: bold;
+    padding: 1rem;
+    box-sizing: border-box;
+}
+
+.sec_cal .cal_wrap {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    padding: 0.5rem;
+    box-sizing: border-box;
+}
+
+.sec_cal .cal_wrap .days { display: flex; }
+
+.sec_cal .cal_wrap .day,
+.sec_cal .cal_wrap .dates>div {
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    width: calc(100% / 7);
+    color: #fff;
+    font-size: 0.9rem;
+    text-align: center;
+    font-weight: bold;
+    border-radius: 50%;
+}
+
+.current.today {background: rgb(242 242 242);}
+
+.sec_cal .cal_wrap .dates {
+    display: flex;
+    flex-flow: wrap;
+    flex: 1;
+}
+
+
+.sec_cal .cal_wrap .day:nth-child(7n),
+.sec_cal .cal_wrap .dates>div:nth-child(7n),
+.sec_cal .cal_wrap .day:nth-child(7n + 1),
+.sec_cal .cal_wrap .dates>div:nth-child(7n + 1) {
+    color: gray;
+}
+
+@media (orientation: portrait) {
+	/* 세로 모드일 때 적용할 CSS */
+    .sec_cal{
+        width: 80vw;
+        height: 80vw;
+    }
+}
+
+@media (orientation: landscape) {
+	/* 가로 모드일 때 적용할 CSS */
+    .sec_cal{
+        width: 80vh;
+        height: 80vh;
+    }
+}
