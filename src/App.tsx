@@ -20,42 +20,14 @@ import Music from './components/music/music';
 
 function App() {  
 
-  const [screen, setScreen] = useState('');
+  const [isPortrait, setIsPortrait] = useState(true); // true => 세로모드 / false => 가로모드
 
-  let screenSensor = () => {
-    if (window.matchMedia('(orientation: portrait)').matches) {
-      // Portrait 모드일 때 실행할 스크립트
-      // 폭과 높이가 같으면 Portrait 모드로 인식돼요
-      setScreen('portrait');
-    } else {
-      // Landscape 모드일 때 실행할 스크립트
-      setScreen('landscape');
-    }
+  const screenSensor = () => {
+    setIsPortrait(window.matchMedia('(orientation: portrait)').matches);
   }
-
-  // 가져오기 성공
-function getSuccess(position:PositionCallback) {
-  // 위도
-  // const lat = position.coords.latitude;
-  // 경도
-  // const lng = position.coords.longitude;
-
-  const {lat, lng} = position.coord;
-  // 위도 경도 오차(m)
-  const accuracy = Math.floor(position.coords.accuracy);
-
-  console.log(lat, lng, accuracy)
-}
-
-// 가지오기 실패(거부)
-function getError() {
-  alert('Geolocation Error'); 
-}
 
 	useEffect(()=>{
     screenSensor();
-    // 현재 위치 가져오기
-    navigator.geolocation.getCurrentPosition(getSuccess, getError);
   },[]);
 
   // 창의 사이즈가 바뀔때마다 검사하여 스크립트 실행
@@ -70,7 +42,7 @@ function getError() {
           spaceBetween={0}
           slidesPerView={1}
           loop={true}
-          direction={screen === 'portrait' ? 'horizontal' : 'vertical'}
+          direction={isPortrait ? 'horizontal' : 'vertical'}
           pagination={true}
           modules={[Pagination]}
         >
@@ -90,7 +62,7 @@ function getError() {
           spaceBetween={0}
           slidesPerView={1}
           loop={true}
-          direction={screen === 'portrait' ? 'horizontal' : 'vertical'}
+          direction={isPortrait ? 'horizontal' : 'vertical'}
           pagination={true}
           modules={[Pagination]}
         >
