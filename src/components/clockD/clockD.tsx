@@ -1,32 +1,24 @@
-import {useState} from "react";
+import React from 'react';
 import styles from './clockD.module.css';
-import useInterval from "../../hooks/useInterval";
+import { useClock } from '../../hooks/useClock';
 
 function ClockD() {
-    const startDay = new Date();
-    const [hr, setHr] = useState(startDay.getHours());
-    const [mn, setMn] = useState(startDay.getMinutes());
-    const [sc, setSc] = useState(startDay.getSeconds());
-    
-    useInterval(
-        () => {
-            let day = new Date();
-            setHr(day.getHours());
-            setMn(day.getMinutes());
-            setSc(day.getSeconds());
-        }
-    ,1000);
+    const { time } = useClock({});
+    const { hour, minute, second } = time;
 
-    return(
-        <div className='itemWrap'>
+    return (
+        <div className="itemWrap">
             <div className={styles.clock}>
-                <div className={styles.ampm}>{hr>=12 ? 'PM' : 'AM'}</div>
+                <div className={styles.ampm}>{hour >= 12 ? 'PM' : 'AM'}</div>
                 <div className={styles.time}>
-                    {hr % 12 ? hr % 12 : 12} : {mn < 10 ? '0'+mn : mn}
+                    {hour % 12 ? hour % 12 : 12} :{' '}
+                    {minute < 10 ? '0' + minute : minute}
                 </div>
-                <div className={styles.sec}>{sc < 10 ? '0'+sc : sc}</div>
+                <div className={styles.sec}>
+                    {second < 10 ? '0' + second : second}
+                </div>
             </div>
         </div>
-    )
+    );
 }
 export default ClockD;

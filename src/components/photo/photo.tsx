@@ -1,20 +1,32 @@
-import {useState} from "react";
+import React from 'react';
 import styles from './photo.module.css';
-import useInterval from "../../hooks/useInterval";
 
 function Photo() {
+    const [imgFile, setImgFile] = React.useState('');
 
-    const list = [{
-        idx:1,
-        src: 'https://mblogthumb-phinf.pstatic.net/MjAyMzA1MDFfMjY2/MDAxNjgyOTMxMjcxMDIw.4i57QHWWv3kZ0xtcjFeMn-L6Zbl04pvK7rsMIEg_0FQg.B3xS6fuxuDv-S7-6hbIqkrSOv_OBOyFSBHQ-tL1qW_gg.PNG.kws3128pdm/%EC%A0%9C%EB%AA%A9%EC%9D%84_%EC%9E%85%EB%A0%A5%ED%95%98%EC%84%B8%EC%9A%94_(2).png?type=w800'
-    }]
+    // 이미지 업로드 input의 onChange
+    const saveImgFile = (e: React.ChangeEvent) => {
+        const targetFiles = (e.target as HTMLInputElement).files as FileList;
+        console.log(URL.createObjectURL(targetFiles[0]));
+        setImgFile(URL.createObjectURL(targetFiles[0]));
+    };
 
-    return(
-        <div className='itemWrap'>
+    // 취소나면
+    return (
+        <div className="itemWrap">
             <div className={styles.photoWrap}>
-                <img src={list[0].src}/>
+                <label htmlFor="image">
+                    {imgFile ? <img src={imgFile} /> : '이미지를 선택하세요.'}
+                </label>
+
+                <input
+                    type="file"
+                    id="image"
+                    accept="image/*"
+                    onChange={saveImgFile}
+                />
             </div>
         </div>
-    )
+    );
 }
 export default Photo;
